@@ -1,0 +1,12 @@
+# Pie Chart JS
+
+Pie chart JS is a javascript written custom HTMLElement for creating easy pie charts in HTML
+
+## Installation
+
+Download the pie-chart-js.js file and then include it in your script using the following tag
+
+```html
+<script src="pie-chart-js.js">
+</script>
+```
