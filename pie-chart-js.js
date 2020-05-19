@@ -66,18 +66,23 @@ class PChart extends HTMLElement {
         }
         ctx.font = font_style;
         var font_size = ctx.measureText('X').width * 2;
+        var legend_width = 0;
+        for (var i = 0; i < this.names.length; i++)
+        {
+            legend_width = Math.max(ctx.measureText(this.names[i]).width + 5, legend_width);
+        }
 
         this.y_origin = height * 0.5;
         this.x_origin = c.width * 0.5;
         this.radius = Math.min(c.width * 0.4, c.height * 0.35);
         var share_percentage = [];
 
-        var x = c.width - parseInt(c.width * 0.12019231) * 1.25;
+        var x = c.width - legend_width * 1.25;
         var y = font_size;
 
         ctx.beginPath();
         var rect_height = (this.names.length * font_size) + 20;
-        ctx.rect(x, y + 10, parseInt(c.width * 0.12019231), rect_height);
+        ctx.rect(x, y + 10, legend_width, rect_height);
         ctx.stroke();
         y += 10;
         for (var i = 0; i < this.names.length; i++)
@@ -91,8 +96,8 @@ class PChart extends HTMLElement {
             ctx.fillRect(x + 5, y - font_size / 2, 5, 5);
 
             var shorten = 0;
-            if (ctx.measureText(this.names[i]).width > parseInt(c.width * 0.12019231) - 15) {
-                while (ctx.measureText(this.shorten_text(this.names[i], this.names[i].length - shorten)).width > (parseInt(c.width * 0.12019231) - 15) && this.names[i].length - shorten > 0) {
+            if (ctx.measureText(this.names[i]).width > legend_width - 15) {
+                while (ctx.measureText(this.shorten_text(this.names[i], this.names[i].length - shorten)).width > (legend_width - 15) && this.names[i].length - shorten > 0) {
                     shorten++;
                 }
             }
