@@ -60,9 +60,9 @@ class PChart extends HTMLElement {
         c.height = height;
         var ctx = c.getContext("2d");
 
-        var font_style = this.style.getPropertyValue('font-size');
+        var font_style = this.style.getPropertyValue('font');
         if (font_style === '') {
-            font_style = '12pt';
+            font_style = '12pt sans-serif';
         }
         ctx.font = font_style;
         var font_size = ctx.measureText('X').width * 2;
