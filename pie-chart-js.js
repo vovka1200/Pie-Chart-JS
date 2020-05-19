@@ -69,7 +69,7 @@ class PChart extends HTMLElement {
         var legend_width = 0;
         for (var i = 0; i < this.names.length; i++)
         {
-            legend_width = Math.max(ctx.measureText(this.names[i]).width + 5, legend_width);
+            legend_width = Math.max(ctx.measureText(this.names[i]).width + 20, legend_width);
         }
 
         this.y_origin = height * 0.5;
@@ -77,7 +77,7 @@ class PChart extends HTMLElement {
         this.radius = Math.min(c.width * 0.4, c.height * 0.35);
         var share_percentage = [];
 
-        var x = c.width - legend_width * 1.25;
+        var x = c.width - legend_width - 15;
         var y = font_size;
 
         ctx.beginPath();
